@@ -1,9 +1,9 @@
 //
 //  RegisterViewController.swift
-//  Flash Chat iOS13
+//  Flash Chat
 //
-//  Created by Angela Yu on 21/10/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
+//  Created by Qihui Yu on 23/02/2023.
+//  Copyright © 2023 Qihui Yu. All rights reserved.
 //
 
 import UIKit
@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
                     print(e.localizedDescription)
                 } else {
                     // Navigate to ChatViewController
-                    self.performSegue(withIdentifier: "RegisterToChat", sender: self)
+                    self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
                 }
             }
         }

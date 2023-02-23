@@ -1,12 +1,13 @@
 //
 //  ChatViewController.swift
-//  Flash Chat iOS13
+//  Flash Chat
 //
-//  Created by Angela Yu on 21/10/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
+//  Created by Qihui Yu on 23/02/2023.
+//  Copyright © 2023 Qihui Yu. All rights reserved.
 //
 
 import UIKit
+import Firebase
 
 class ChatViewController: UIViewController {
 
@@ -15,11 +16,20 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = Constants.appName
+        navigationItem.hidesBackButton = true
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
     }
     
-
+    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
+        do {
+            try Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
 }

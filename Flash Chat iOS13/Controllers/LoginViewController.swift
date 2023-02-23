@@ -1,12 +1,13 @@
 //
 //  LoginViewController.swift
-//  Flash Chat iOS13
+//  Flash Chat
 //
-//  Created by Angela Yu on 21/10/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
+//  Created by Qihui Yu on 23/02/2023.
+//  Copyright © 2023 Qihui Yu. All rights reserved.
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
 
@@ -15,6 +16,16 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func loginPressed(_ sender: UIButton) {
+        if let email = emailTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if let e = error {
+                    print(e.localizedDescription)
+                } else {
+                    // Navigate to ChatViewController
+                    self.performSegue(withIdentifier: Constants.loginSegue, sender: self)
+                }
+            }
+        }
     }
     
 }
